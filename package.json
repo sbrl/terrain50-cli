@@ -1,0 +1,37 @@
+{
+	"name": "terrain50-cli",
+	"version": "1.0.0",
+	"description": "CLI for parsing Ordnance Survey Digital Elevation Model files",
+	"main": "src/index.mjs",
+	"scripts": {
+		"test": "echo \"No tests have been implemented yet\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sbrl/terrain50-cli.git"
+	},
+	"keywords": [
+		"terrain50",
+		"dem",
+		"digital",
+		"elevation",
+		"model",
+		"parsing",
+		"cli"
+	],
+	"author": "Starbeamrainbowlabs",
+	"license": "MPL-2.0",
+	"bugs": {
+		"url": "https://github.com/sbrl/terrain50-cli/issues"
+	},
+	"files": [
+		"src/",
+		"LICENSE",
+		"package.json"
+	],
+	"homepage": "https://github.com/sbrl/terrain50-cli#readme",
+	"dependencies": {
+		"applause-cli": "^1.2.0",
+		"terrain50": "^1.0.0"
+	}
+}
