@@ -1,0 +1,13 @@
+description = "Merge multiple Terrain50 instances into a single file"
+
+[[arguments]]
+name = "input"
+description = "The input directory to read Terrain50 files from"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The output file to write the merged Terrain50 instances to"
+# default_value = ""
+type = "string"

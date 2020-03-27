@@ -1,0 +1,19 @@
+description = "Scales the size of a Terrain50 file by a given scale factor."
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The output filepath to write to"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "scale-factor"
+description = "The scale factor to apply."
+# default_value = ""
+type = "float"

@@ -1,0 +1,23 @@
+description = "Trim a Terrain50 file down to match a 2nd reference Terrain50 file"
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "reference"
+description = "The reference Terrain50 to trim the input to"
+
+[[arguments]]
+name = "output"
+description = "The output filepath to write to"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "replace"
+description = "Replace 1 value with another while trimming. Argument value format is \"old_value,new_value\"."
+# default_value = ""
+type = "string" # We could really have used this being a JS file instead - and we could define a function here instead

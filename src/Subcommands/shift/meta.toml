@@ -1,0 +1,19 @@
+description = "Shift the values in a Terrain50 file such that the minimum value is a given number"
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The output filepath to write to"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "min-value"
+description = "The new minimum value to shift to."
+# default_value = ""
+type = "integer"

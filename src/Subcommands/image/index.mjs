@@ -1,0 +1,36 @@
+"use strict";
+
+import fs from 'fs';
+
+import l from '../../Helpers/Log.mjs';
+import a from '../../Helpers/Ansi.mjs';
+
+import Terrain50 from 'terrain50';
+import Terrain50Renderer from './Terrain50Renderer.mjs';
+
+export default async function(settings) {
+	if(typeof settings.cli.input !== "string") {
+		l.error("Error: No input file specified (try --filename path/to/file.asc)");
+		process.exit(1);
+	}
+	if(typeof settings.cli.output !== "string") {
+		l.error("Error: No output file specified (try --filename-output path/to/image.png)");
+		process.exit(1);
+	}
+	
+	let terrain50 = Terrain50.Parse(
+		await fs.promises.readFile(settings.cli.input, "utf-8")
+	);
+	
+	let renderer = new Terrain50Renderer(settings.scale_factor | 1);
+	let png_buffer = await renderer.render(terrain50);
+	
+	if(!(png_buffer instanceof Buffer))
+		throw new Error(`Error: Renderer did not return Buffer (found unexpected ${png_buffer} instead)`);
+	
+	await fs.promises.writeFile(
+		settings.cli.output,
+		png_buffer
+	);
+	l.log(`Written to ${a.hicol}${settings.cli.output}${a.reset}`);
+}

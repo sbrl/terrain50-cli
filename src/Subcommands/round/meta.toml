@@ -1,0 +1,13 @@
+description = "Round values to the nearest integer in an ascii Terrain50 file."
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file to operate on"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The filepath to write the output to"
+# default_value = ""
+type = "string"

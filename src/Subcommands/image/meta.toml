@@ -1,0 +1,13 @@
+description = "Convert a Terrain50 file into an image"
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The output file to write to"
+# default_value = ""
+type = "string"

@@ -1,0 +1,7 @@
+description = "Convert 1 or more Terrain50 files to a GeoJSON bounding box"
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file(s) to operate on. May be specified multiple times."
+# default_value = ""
+type = "string_multi"

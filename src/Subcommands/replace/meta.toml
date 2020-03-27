@@ -1,0 +1,25 @@
+description = "Find and replace values in an ascii Terrain50 file."
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file to operate on"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The filepath to write the output to"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "find"
+description = "The target value to find"
+# default_value = ""
+type = "integer"
+
+[[arguments]]
+name = "replace"
+description = "The value to replace values that match the target value"
+# default_value = ""
+type = "integer"
