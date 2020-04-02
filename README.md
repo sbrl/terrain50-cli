@@ -1,4 +1,4 @@
-# terrain50
+# terrain50-cli
 
 > CLI for parsing Ordnance Survey Digital Elevation Model files
 
