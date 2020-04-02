@@ -10,5 +10,9 @@ Release template text:
 	```
 
 
+## v1.0.1
+ - Update README
+
+
 ## v1.0
  - Initial release! Refactored out from my main PhD codebase.
