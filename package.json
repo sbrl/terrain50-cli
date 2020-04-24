@@ -27,6 +27,7 @@
 	"files": [
 		"src/",
 		"LICENSE",
+		"package-lock.json",
 		"package.json"
 	],
 	"homepage": "https://github.com/sbrl/terrain50-cli#readme",
