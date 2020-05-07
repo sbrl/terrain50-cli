@@ -6,7 +6,8 @@ import encode from 'image-encode';
 import l from '../../Helpers/Log.mjs';
 
 class Terrain50Renderer {
-	constructor(in_scale_factor) {
+	constructor(in_scale_factor, in_domain = "auto") {
+		this.colour_domain = in_domain;
 		this.scale_factor = in_scale_factor;
 		this.colour_scale = chroma.scale([
 			"#333333",
@@ -26,15 +27,22 @@ class Terrain50Renderer {
 	 * @return	{ArrayBuffer}	A canvas with the image rendered on it.
 	 */
 	async do_render(terrain) {
-		let min = terrain.min_value, max = terrain.max_value;
-		let colour_domain = this.colour_scale.domain([
-			min, max
-		]);
+		let colour_domain = null;
+		if(this.colour_domain === "auto") {
+			let min = terrain.min_value, max = terrain.max_value;
+			colour_domain = this.colour_scale.domain([
+				min, max
+			]);
+			l.log(`[Terrain50Renderer] Automatic colour domain: ${min} - ${max}`);
+		}
+		else {
+			colour_domain = this.colour_scale.domain(this.colour_domain);
+			l.log(`[Terrain50Renderer] Static colour domain: ${this.colour_domain[0]} - ${this.colour_domain[1]}`);
+		}
 	
 		let width = Math.floor(terrain.meta.ncols / this.scale_factor),
 			height = Math.floor(terrain.meta.nrows / this.scale_factor);
 	
-		l.log(`[Terrain50Renderer] Colour domain: ${min} - ${max}`);
 		l.log(`[Terrain50Renderer] Dimensions: ${width}x${height}`);
 	
 		// Create the image
