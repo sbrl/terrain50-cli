@@ -1,1 +1,7 @@
 description = "Read the Terrain50 file on stdin, validate it, and display any errors found"
+
+[[arguments]]
+name = "mode"
+description = "The mode to operate in. Possible values: validate (default), stream. If stream, then validation will be done on individual items after parsing (otherwise validation is done during parsing, which catches more errors)"
+default_value = "validate"
+type = "string"

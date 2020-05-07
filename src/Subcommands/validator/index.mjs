@@ -5,12 +5,38 @@ import fs from 'fs';
 import a from '../../Helpers/Ansi.mjs';
 import Terrain50 from 'terrain50';
 
-export default async function(_settings) {
-	// Read stdin into a string - ref https://stackoverflow.com/a/56012724/1460422
-	let source = fs.readFileSync(0, 'utf-8');
-	
-	let errors = Terrain50.Validate(source);
-	
+export default async function(settings) {
+	switch(settings.cli.mode) {
+		case "validate":
+			// Read stdin into a string - ref https://stackoverflow.com/a/56012724/1460422
+			let source = fs.readFileSync(0, 'utf-8');
+			
+			let errors = Terrain50.Validate(source);
+			display_errors(errors);
+			break;
+		
+		case "stream":
+			let i = 0;
+			for await (let next of Terrain50.ParseStream(process.stdin)) {
+				console.log(`>>> Item ${i} <<<`);
+				display_errors(next.validate());
+				i++;
+			}
+			break;
+		
+		default:
+			console.error(`${a.fred}${a.hicol}Error: Mode '${settings.cli.mode}' was not recognised. Possible modes: validate (the default), stream.${a.reset}`);
+			process.exit(1);
+	}
+}
+
+/**
+ * Displays the errors returned by a Terrain50 validation function.
+ * (e.g. `Terrain50.Validate(str)`, or `obj.validate()`)
+ * @param  {[type]} errors [description]
+ * @return {[type]}        [description]
+ */
+function display_errors(errors) {
 	if(errors.length > 0) {
 		for(let error of errors) {
 			switch(error.level) {
@@ -30,5 +56,4 @@ export default async function(_settings) {
 	else {
 		console.log(`${a.fgreen}Validation completed successfully - no issues detected :D${a.reset}`);
 	}
-	
 }
