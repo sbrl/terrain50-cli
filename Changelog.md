@@ -10,6 +10,10 @@ Release template text:
 	```
 
 
+## v1.1.1
+ - Update `terrain50` to v1.4.1
+
+
 ## v1.1.0
  - Add support for `Terrain50.ParseStream()` via new --mode flag for the validator subcommand
 
