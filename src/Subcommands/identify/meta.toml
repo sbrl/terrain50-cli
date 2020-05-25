@@ -1,0 +1,13 @@
+description = "Summarise the specified Terrain50 file"
+
+[[arguments]]
+name = "input"
+description = "The filename to operate on (a dash - means read from stdin)"
+default_value = "-"
+type = "string"
+
+[[arguments]]
+name = "mode"
+description = "The mode to operate in. Possible values: single (default), stream. If stream, then the input will be parsed as a stream (otherwise everything is read into a string and parsed as a single entity)"
+default_value = "single"
+type = "string"
