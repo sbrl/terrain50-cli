@@ -10,6 +10,10 @@ Release template text:
 	```
 
 
+## Unreleased
+ - Added new (untested!) `identify` subcommand
+
+
 ## v1.2
  - Update `terrain50` to v1.5
  - Update `applause-cli` to v1.2.3 to fix subcommand argument default value issue
