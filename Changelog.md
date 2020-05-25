@@ -10,6 +10,12 @@ Release template text:
 	```
 
 
+## v1.2
+ - Update `terrain50` to v1.5
+ - Update `applause-cli` to v1.2.3 to fix subcommand argument default value issue
+ - **Breaking:** Rename `validator` subcommand to `validate` to better fit with the others
+
+
 ## v1.1.1
  - Update `terrain50` to v1.4.1
 
