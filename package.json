@@ -33,11 +33,11 @@
 	"homepage": "https://github.com/sbrl/terrain50-cli#readme",
 	"dependencies": {
 		"@iarna/toml": "^2.2.5",
-		"applause-cli": "^1.2.3",
+		"applause-cli": "^1.2.4",
 		"chroma-js": "^2.1.0",
 		"image-encode": "^1.3.0",
 		"nexline": "^1.2.0",
-		"terrain50": "^1.5.0"
+		"terrain50": "^1.6.0"
 	},
 	"bin": {
 		"terrain50": "./src/index.mjs"
