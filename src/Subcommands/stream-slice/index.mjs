@@ -38,12 +38,15 @@ export default async function(settings) {
 		
 		if(i < offset) continue;
 		
-		let is_last = i - offset >= count;
+		// Write it to the output
+		let is_last = i - offset >= count - 1;
 		await next.serialise(stream_out, is_last);
 		
+		// Don't go further than we need to
 		if(is_last) break;
 		
-		l.log(`Written ${i - offset} / count objects (~${percentage(i - offset, count).toFixed(2)}%)       \r`);
+		// Update the user
+		l.log(`Written ${i - offset} / count objects (~${percentage(i - offset, count).toFixed(2)}%)`);
 	}
 	l.log(`Slicing complete`);
 	
