@@ -43,7 +43,7 @@ export default async function(settings) {
 		
 		if(is_last) break;
 		
-		process.stderr.write(`Written ${i - offset} / count objects (~${percentage(i - offset, count).toFixed(2)}%)       \r`);
+		l.log(`Written ${i - offset} / count objects (~${percentage(i - offset, count).toFixed(2)}%)       \r`);
 	}
 	l.log(`Slicing complete`);
 	
