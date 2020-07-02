@@ -47,5 +47,5 @@ export default async function(settings) {
 	}
 	l.log(`Slicing complete`);
 	
-	stream_in.close();
+	stream_in.destroy();
 }
