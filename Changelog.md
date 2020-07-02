@@ -12,6 +12,7 @@ Release template text:
 
 ## Unreleased
  - Added new (untested!) `identify` subcommand
+ - Added new `stream-slice` subcommand
 
 
 ## v1.2
