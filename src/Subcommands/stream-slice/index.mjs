@@ -41,8 +41,11 @@ export default async function(settings) {
 		let is_last = i - offset >= count;
 		await next.serialise(stream_out, is_last);
 		
-		let percentage = percentage(i - offset, count);
-		process.stderr.write(`Written ${i - offset} / count objects (~${count.toFixed(2)}%)       \r`);
+		if(is_last) break;
+		
+		process.stderr.write(`Written ${i - offset} / count objects (~${percentage(i - offset, count).toFixed(2)}%)       \r`);
 	}
 	l.log(`Slicing complete`);
+	
+	stream_in.close();
 }
