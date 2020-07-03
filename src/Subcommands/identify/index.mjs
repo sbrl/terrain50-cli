@@ -8,7 +8,7 @@ import Terrain50 from 'terrain50';
 function summarise_obj(obj) {
 	console.log(`Format: ASC`);
 	console.log(`Claimed size: ${obj.meta.ncols}x${obj.meta.nrows}`);
-	console.log(`Actual size: ${obj.data.length}x${obj.data[0].length}`);
+	console.log(`Actual size: ${obj.data[0].length}x${obj.data.length}`);
 	console.log(`Lower-left corner: (${obj.meta.xllcorner}, ${obj.meta.yllcorner})`);
 	console.log(`Cell size: ${obj.meta.cellsize}`);
 	if(typeof obj.meta.NODATA_value !== "undefined")
