@@ -40,6 +40,12 @@ export default async function(settings) {
 				
 				i++;
 			}
+			break;
+		
+		default:
+			console.error(`Error: Unknown mode ${settings.cli.mode} (possible modes: single, stream)`);
+			process.exit(1);
+			break;
 	}
 }
 
