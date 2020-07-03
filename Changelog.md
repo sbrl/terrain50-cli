@@ -3,11 +3,15 @@ This is the master changelog for [`terrain50-cli`](https://npmjs.org/packages/te
 
 Release template text:
 
-	Install or update from npm:
+-----
 
-	```bash
-	npm install --save terrain50-cli
-	```
+Install or update from npm:
+
+```bash
+npm install --save terrain50-cli
+```
+
+-----
 
 
 ## Unreleased

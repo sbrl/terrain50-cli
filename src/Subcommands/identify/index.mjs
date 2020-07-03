@@ -17,13 +17,11 @@ function summarise_obj(obj) {
 }
 
 export default async function(settings) {
-	
-	
 	let iterator = null;
 	switch(settings.cli.mode) {
 		case "single":
 			let obj = Terrain50.Parse(
-				fs.promises.readFile(settings.cli.input == "-" ? 0 : settings.cli.input, "utf-8")
+				await fs.promises.readFile(settings.cli.input == "-" ? 0 : settings.cli.input, "utf-8")
 			);
 			summarise_obj(obj);
 			break;
@@ -40,30 +38,6 @@ export default async function(settings) {
 				
 				i++;
 			}
-	}
-	
-	
-	switch(settings.cli.mode) {
-		case "validate":
-			// Read stdin into a string - ref https://stackoverflow.com/a/56012724/1460422
-			let source = fs.readFileSync(0, 'utf-8');
-			
-			let errors = Terrain50.Validate(source);
-			display_errors(errors);
-			break;
-		
-		case "stream":
-			let i = 0;
-			for await (let next of Terrain50.ParseStream(process.stdin)) {
-				console.log(`>>> Item ${i} <<<`);
-				display_errors(next.validate());
-				i++;
-			}
-			break;
-		
-		default:
-			console.error(`${a.fred}${a.hicol}Error: Mode '${settings.cli.mode}' was not recognised. Possible modes: validate (the default), stream.${a.reset}`);
-			process.exit(1);
 	}
 }
 
