@@ -21,7 +21,9 @@ export default async function(settings) {
 	switch(settings.cli.mode) {
 		case "single":
 			let obj = Terrain50.Parse(
-				await fs.promises.readFile(settings.cli.input == "-" ? 0 : settings.cli.input, "utf-8")
+				settings.cli.input == "-"
+					? fs.readFileSync(0, "utf-8")
+					: await fs.promises.readFile(settings.cli.input, "utf-8")
 			);
 			summarise_obj(obj);
 			break;
