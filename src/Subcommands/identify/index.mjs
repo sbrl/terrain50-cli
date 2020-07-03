@@ -35,7 +35,9 @@ export default async function(settings) {
 			
 			let i = 0;
 			for await(let next of Terrain50.ParseStream(stream)) {
-				console.log(`${a.fgreen}>>>>> ${a.hicol}Item ${i}${a.reset}${a.fgreen} <<<<<${a.reset}`);
+				console.error(`${a.fgreen}>>>>> ${a.hicol}`);
+				console.log(`Item ${i}`);
+				console.error(`${a.reset}${a.fgreen} <<<<<${a.reset}`);
 				summarise_obj(next);
 				
 				i++;
