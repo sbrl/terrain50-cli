@@ -14,8 +14,8 @@ npm install --save terrain50-cli
 -----
 
 
-## Unreleased
- - Added new (untested!) `identify` subcommand
+## v1.3
+ - Added new `identify` subcommand
  - Added new `stream-slice` subcommand
 
 
