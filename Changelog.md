@@ -17,6 +17,7 @@ npm install --save terrain50-cli
 ## Unreleased
  - Add new `--use-regex` flag to `validate` subcommand
 
+
 ## v1.3
  - Added new `identify` subcommand
  - Added new `stream-slice` subcommand
