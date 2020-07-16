@@ -16,8 +16,8 @@ export default async function(settings) {
 			break;
 		
 		case "stream":
-			let i = 0;
-			for await (let next of Terrain50.ParseStream(process.stdin)) {
+			let i = 0
+			for await (let next of Terrain50.ParseStream(process.stdin, settings.cli.use_regex ? /\s+/ : " ")) {
 				console.log(`>>> Item ${i} <<<`);
 				display_errors(next.validate());
 				i++;

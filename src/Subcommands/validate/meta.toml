@@ -5,3 +5,9 @@ name = "mode"
 description = "The mode to operate in. Possible values: validate (default), stream. If stream, then validation will be done on individual items after parsing (otherwise validation is done during parsing, which catches more errors)"
 default_value = "validate"
 type = "string"
+
+[[arguments]]
+name = "use-regex"
+description = "When in stream mode, setting this flag causes a regular expression to be used when parsing input data (otherwise it is assumed a single space separates data elements on a line). Makes the parser more tolerant, but less performant."
+default_value = false
+type = "boolean"
