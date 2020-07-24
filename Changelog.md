@@ -14,8 +14,8 @@ npm install --save terrain50-cli
 -----
 
 
-## Unreleased
- - Add new `--use-regex` flag to `validate` subcommand
+## v1.4
+ - [BREAKING] Add new `--use-regex` flag to `validate` subcommand (only takes effect in stream mode: `--mode stream`)
 
 
 ## v1.3
