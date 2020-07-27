@@ -13,6 +13,8 @@ npm install --save terrain50-cli
 
 -----
 
+## v1.4.1
+ - `validate` subcommand in `stream` mode: Write aggregated stats when validation is complete
 
 ## v1.4
  - [BREAKING] Add new `--use-regex` flag to `validate` subcommand (only takes effect in stream mode: `--mode stream`)
