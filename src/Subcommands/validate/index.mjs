@@ -16,12 +16,15 @@ export default async function(settings) {
 			break;
 		
 		case "stream":
-			let i = 0
+			let i = 0, ok = 0, failed = 0;
 			for await (let next of Terrain50.ParseStream(process.stdin, settings.cli.use_regex ? /\s+/ : " ")) {
 				console.log(`>>> Item ${i} <<<`);
-				display_errors(next.validate());
+				let result = next.validate();
+				display_errors(result);
+				if(result.length > 0) failed++; else ok++;
 				i++;
 			}
+			console.error(`${a.fgreen}${a.hicol}Parsed ${i} items (${ok} ok, ${failed} failed)`)
 			break;
 		
 		default:
