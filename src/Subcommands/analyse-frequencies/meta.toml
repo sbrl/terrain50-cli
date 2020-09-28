@@ -17,3 +17,9 @@ name = "ignore-nodata"
 description = "Ignore NODATA values when analysing."
 default_value = false
 type = "boolean"
+
+[[arguments]]
+name = "quiet"
+description = "Don't print progress information"
+default_value = false
+type = "boolean"
