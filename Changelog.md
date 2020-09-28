@@ -13,6 +13,7 @@ npm install --save terrain50-cli
 
 -----
 
+
 ## v1.5
  - Update dependencies
  - Add new `analyse-frequencies` subcommand
