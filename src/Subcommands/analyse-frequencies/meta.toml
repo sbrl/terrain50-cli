@@ -1,0 +1,19 @@
+description = "Count the frequencies of data values. Data values are rounded down before counting."
+
+[[arguments]]
+name = "input"
+description = "The input file to analyse (default: stdin)"
+default_value = "-"
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The output file to write the results to as tab-separated-values (default: stdout)"
+default_value = "-"
+type = "string"
+
+[[arguments]]
+name = "ignore-nodata"
+description = "Ignore NODATA values when analysing."
+default_value = false
+type = "boolean"
