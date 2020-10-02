@@ -12,15 +12,16 @@ export default async function(settings) {
 			let source = fs.readFileSync(0, 'utf-8');
 			
 			let errors = Terrain50.Validate(source);
-			display_errors(errors);
+			display_errors(errors, settings.cli.quiet);
 			break;
 		
 		case "stream":
 			let i = 0, ok = 0, failed = 0;
 			for await (let next of Terrain50.ParseStream(process.stdin, settings.cli.use_regex ? /\s+/ : " ")) {
-				console.log(`>>> Item ${i} <<<`);
+				if(!settings.cli.quiet) console.log(`>>> Item ${i} <<<`);
 				let result = next.validate();
-				display_errors(result);
+				if(settings.cli.quiet && result.length > 0) console.log(`>>> Item ${i} <<<`);
+				display_errors(result, settings.cli.quiet);
 				if(result.length > 0) failed++; else ok++;
 				i++;
 			}
@@ -36,10 +37,10 @@ export default async function(settings) {
 /**
  * Displays the errors returned by a Terrain50 validation function.
  * (e.g. `Terrain50.Validate(str)`, or `obj.validate()`)
- * @param  {[type]} errors [description]
- * @return {[type]}        [description]
+ * @param	{Terrain50ValidationMessage[]}	errors	The list of validation errors to display.
+ * @param	{bool}							[quiet=false]	Whether to avoid printing anything if the list of errors is empty
  */
-function display_errors(errors) {
+function display_errors(errors, quiet = false) {
 	if(errors.length > 0) {
 		for(let error of errors) {
 			switch(error.level) {
@@ -56,7 +57,7 @@ function display_errors(errors) {
 		}
 		process.exit(1);
 	}
-	else {
+	else if(!quiet) {
 		console.log(`${a.fgreen}Validation completed successfully - no issues detected :D${a.reset}`);
 	}
 }

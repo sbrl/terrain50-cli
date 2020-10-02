@@ -14,6 +14,11 @@ npm install --save terrain50-cli
 -----
 
 
+## v1.6
+ - Add new `split` subcommand
+ - `validate` subcommand: Add new `--quiet` argument
+
+
 ## v1.5
  - Update dependencies
  - Add new `analyse-frequencies` subcommand

@@ -11,3 +11,9 @@ name = "use-regex"
 description = "When in stream mode only, setting this flag causes a regular expression to be used when parsing input data (otherwise it is assumed a single space separates elements on a line). Makes the parser more tolerant, but less performant."
 default_value = false
 type = "boolean"
+
+[[arguments]]
+name = "quiet"
+description = "Don't print validation individual success messages, only errors"
+default_value = false
+type = "boolean"
