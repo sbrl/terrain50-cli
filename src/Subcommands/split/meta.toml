@@ -1,0 +1,26 @@
+description = "Split a single stream of Terrain50 objects into seprate files"
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file (default: stdin)"
+default_value = "-"
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The output directory to write to"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "no-gzip"
+description = "Don't automatically gzip the output streams"
+default_value = false
+type = "boolean"
+
+
+[[arguments]]
+name = "count"
+description = "The number of objects to extract (default: Infinity)"
+default_value = inf # inf = Infinity
+type = "integer"
