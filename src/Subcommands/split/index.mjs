@@ -9,6 +9,9 @@ import SpawnStream from 'spawn-stream';
 import a from '../../Helpers/Ansi.mjs';
 import l from '../../Helpers/Log.mjs';
 
+import GzipChildProcess from '../../Helpers/GzipChildProcess.mjs';
+import { end_safe } from '../../Helpers/StreamHelpers.mjs';
+
 export default async function(settings) {
 	// 1: Parse settings
 	let stream_in = process.stdin;
@@ -39,15 +42,20 @@ export default async function(settings) {
 		
 		// Create the output stream
 		let stream_out = fs.createWriteStream(output_filename),
-			stream_gzip = null;
+			gzip = null;
 		if(!settings.cli.no_gzip) {
-			stream_gzip = SpawnStream("gzip");
-			stream_gzip.pipe(stream_out);
+			gzip = new GzipChildProcess();
+			gzip.stdout.pipe(stream_out);
 		}
 		
+		let init_stream = stream_out;
+		if(gzip !== null) init_stream = gzip.stdin;
 		
 		// Write it to the output
-		await next.serialise(stream_gzip || stream_out, true);
+		await next.serialise(init_stream || stream_out, false);
+		
+		if(gzip !== null) await gzip.end_gracefully();
+		await end_safe(stream_out);
 		
 		// Update the user
 		l.log(`Written ${i+1} objects so far`);
