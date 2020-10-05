@@ -14,6 +14,10 @@ npm install --save terrain50-cli
 -----
 
 
+## Unreleased
+ - `split`: Fix invalid gzip file generation
+
+
 ## v1.6
  - Add new `split` subcommand
  - `validate` subcommand: Add new `--quiet` argument
