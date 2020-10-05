@@ -42,9 +42,11 @@ function write_safe(stream_out, data) {
  */
 function end_safe(stream, chunk = undefined) {
 	return new Promise((resolve, _reject) => {
-		if(typeof chunk == "undefined") stream.end(resolve);
-		else stream.end(chunk, resolve);
+		stream.once("finish", resolve);
+		if(typeof chunk == "undefined") stream.end();
+		else stream.end(chunk);
 	});
 }
+
 
 export { write_safe, end_safe };
