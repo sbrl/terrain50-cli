@@ -16,6 +16,7 @@ npm install --save terrain50-cli
 
 ## Unreleased
  - `split`: Fix invalid gzip file generation
+ - Update terrain50
 
 
 ## v1.6
