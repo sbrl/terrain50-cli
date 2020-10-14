@@ -16,6 +16,7 @@ npm install --save terrain50-cli
 
 ## Unreleased
  - `split`: Fix invalid gzip file generation
+     - TODO: Ensure we're using the latest version of GzipChildProcess here (and that  it does actually work)
  - Update terrain50
 
 
