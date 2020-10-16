@@ -10,6 +10,8 @@ import CliParser from 'applause-cli';
 import a from '../Helpers/Ansi.mjs';
 import settings from './settings.mjs';
 
+import { get_version } from 'terrain50';
+
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"));
 
@@ -54,6 +56,7 @@ async function get_actions_metadata() {
 
 export default async function() {
 	let cli = new CliParser(path.resolve(__dirname, "../../package.json"));
+	cli.set_description_extended(`With terrain50 ${await get_version()}`);
 	
 	// Disable ansi escape codes if requested
 	if(!settings.output.ansi_colour) {
