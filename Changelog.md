@@ -14,6 +14,10 @@ npm install --save terrain50-cli
 -----
 
 
+## v1.6.2
+ - `merge`: Fix crash
+
+
 ## v1.6.1
  - `split`: Fix invalid gzip file generation
  - Update terrain50 to integrate downscaling NODATA fix

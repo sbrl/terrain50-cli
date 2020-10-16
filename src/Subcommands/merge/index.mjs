@@ -7,7 +7,7 @@ import fs from 'fs';
 import a from '../../Helpers/Ansi.mjs';
 import l from '../../Helpers/Log.mjs';
 
-import Terrain50 from './Terrain50.mjs';
+import Terrain50 from 'terrain50';
 
 // const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"));
 
