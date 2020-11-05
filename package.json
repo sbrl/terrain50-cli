@@ -37,9 +37,9 @@
 		"chroma-js": "^2.1.0",
 		"image-encode": "^1.3.0",
 		"nexline": "^1.2.1",
-		"terrain50": "^1.9.1"
+		"terrain50": "^1.9.2"
 	},
 	"bin": {
-		"terrain50": "./src/index.mjs"
+		"terrain50": "src/index.mjs"
 	}
 }

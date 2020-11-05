@@ -14,6 +14,10 @@ npm install --save terrain50-cli
 -----
 
 
+## v1.6.4
+ - Update `terrain50`
+
+
 ## v1.6.3
  - Add current version of `terrain50` library to help text
 
