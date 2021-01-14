@@ -14,6 +14,11 @@ npm install --save terrain50-cli
 -----
 
 
+## v1.7 (unreleased)
+- `image`: Add `--stream` argument for mass-converting large numbers of images from a single stream of multiple terrain50 files
+- `image`: Add support for reading from stdin with `--input -`
+
+
 ## v1.6.4
  - Update `terrain50`
 
