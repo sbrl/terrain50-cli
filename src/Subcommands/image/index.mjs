@@ -38,7 +38,7 @@ export default async function(settings) {
 		
 		let i = 0;
 		for await(let next of Terrain50.ParseStream(reader, settings.cli.tolerant ? /\s+/ : " ")) {
-			process.stderr.write(`${a.fgreen}>>>>> ${a.hicol} Item ${i} ${a.reset}${a.fgreen} <<<<<${a.reset}`);
+			process.stderr.write(`${a.fgreen}>>>>> ${a.hicol} Item ${i} ${a.reset}${a.fgreen} <<<<<${a.reset}\n`);
 			
 			await fs.promises.writeFile(
 				path.join(settings.cli.output, `${i}.png`),
