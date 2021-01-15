@@ -19,7 +19,7 @@ npm install --save terrain50-cli
 - `image`: Add support for reading from stdin with `--input -`
 - Add universal `--tolerant` argument for increasing tolerance of errors when parsing streams
 - `validate`: Removed `--use-regex` argument in favour of new universal `--tolerant` argument
-- Update changelog
+- Update dependencies
 
 
 ## v1.6.4
