@@ -44,6 +44,8 @@ export default async function(settings) {
 				path.join(settings.cli.output, `${i}.png`),
 				await renderer.render(next)
 			);
+			
+			i++;
 		}
 		
 		l.log(`Written ${a.hicol}${i}${a.reset} items to ${a.hicol}${a.fgreen}${settings.cli.output}${a.reset}`);
