@@ -36,8 +36,8 @@
 		"applause-cli": "^1.5.1",
 		"chroma-js": "^2.1.0",
 		"image-encode": "^1.3.0",
-		"nexline": "^1.2.1",
-		"terrain50": "^1.9.6"
+		"nexline": "^1.2.2",
+		"terrain50": "^1.9.7"
 	},
 	"bin": {
 		"terrain50": "src/index.mjs"
