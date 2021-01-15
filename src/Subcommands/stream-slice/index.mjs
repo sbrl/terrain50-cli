@@ -33,7 +33,7 @@ export default async function(settings) {
 	// ------------------------------------------------------------------------
 	
 	let i = -1;
-	for await(let next of Terrain50.ParseStream(stream_in)) {
+	for await(let next of Terrain50.ParseStream(stream_in, settings.cli.tolerant ? /\s+/ : " ")) {
 		i++;
 		
 		if(i < offset) continue;

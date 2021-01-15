@@ -31,7 +31,7 @@ export default async function(settings) {
 	// ------------------------------------------------------------------------
 	
 	let result_map = await Terrain50.AnalyseFrequencies(
-		Terrain50.ParseStream(stream_in),
+		Terrain50.ParseStream(stream_in, settings.cli.tolerant ? /\s+/ : " "),
 		settings.cli.ignore_nodata,
 		settings.cli.quiet
 	);

@@ -34,7 +34,7 @@ export default async function(settings) {
 				stream = fs.createReadStream(settings.cli.input, "utf-8");
 			
 			let i = 0;
-			for await(let next of Terrain50.ParseStream(stream)) {
+			for await(let next of Terrain50.ParseStream(stream, settings.cli.tolerant ? /\s+/ : " ")) {
 				process.stderr.write(`${a.fgreen}>>>>> ${a.hicol}`);
 				process.stdout.write(`Item ${i}`);
 				process.stderr.write(`${a.reset}${a.fgreen} <<<<<${a.reset}`);

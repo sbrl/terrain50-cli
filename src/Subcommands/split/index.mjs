@@ -33,7 +33,7 @@ export default async function(settings) {
 	// ------------------------------------------------------------------------
 	
 	let i = 0;
-	for await(let next of Terrain50.ParseStream(stream_in)) {
+	for await(let next of Terrain50.ParseStream(stream_in, settings.cli.tolerant ? /\s+/ : " ")) {
 		// Determine the output filepath
 		let output_filename = `${i}.asc`;
 		if(!settings.cli.no_gzip) output_filename += `.gz`;

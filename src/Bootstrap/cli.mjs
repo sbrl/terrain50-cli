@@ -57,6 +57,7 @@ async function get_actions_metadata() {
 export default async function() {
 	let cli = new CliParser(path.resolve(__dirname, "../../package.json"));
 	cli.set_description_extended(`With terrain50 ${await get_version()}`);
+	cli.argument("tolerant", "When parsing streams of data, be more tolerant of whitespace inconsistencies and other errors at the cost of decreased performance (otherwise it is assumed a single space separates elements on a line).", false, "boolean");
 	
 	// Disable ansi escape codes if requested
 	if(!settings.output.ansi_colour) {

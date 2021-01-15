@@ -17,6 +17,8 @@ npm install --save terrain50-cli
 ## v1.7 (unreleased)
 - `image`: Add `--stream` argument for mass-converting large numbers of images from a single stream of multiple terrain50 files
 - `image`: Add support for reading from stdin with `--input -`
+- Add universal `--tolerant` argument for increasing tolerance of errors when parsing streams
+- `validate`: Removed `--use-regex` argument in favour of new universal `--tolerant` argument
 
 
 ## v1.6.4
