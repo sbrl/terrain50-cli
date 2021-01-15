@@ -20,7 +20,7 @@ export default async function(settings) {
 		process.exit(1);
 	}
 	
-	if(!fs.existsSync(settings.cli.input)) {
+	if(settings.cli.input !== "-" && !fs.existsSync(settings.cli.input)) {
 		l.error(`Error: The specified input file '${settings.cli.input}' does not exist (check the spelling and permissions).`);
 		process.exit(1);
 	}
