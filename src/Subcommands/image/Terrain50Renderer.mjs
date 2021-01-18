@@ -16,6 +16,11 @@ class Terrain50Renderer {
 			"#efefef",
 		]).mode('lrgb');
 		this.colour_nodata = chroma("#f97153").rgba();
+		
+		thiis.colour_scale_classes = chroma.scale([
+			"#00ff00",
+			"#ff0000"
+		]);
 	}
 
 	/**
@@ -24,7 +29,7 @@ class Terrain50Renderer {
 	 * You probably want the .render() method, which returns a buffer 
 	 * containing a png-encoded image.
 	 * @param	{Terrain50}	terrain	The Terrain50 object instance to render.
-	 * @param	{[number, number][]}	classes	The classes to bin the values into. If not specified, values are not binned into classes. Warning: Values *must* fit into a bin. It is recommended to use -Infinity and Infinity in the first and last bins.
+	 * @param	{{min:number,max:number}[]}	classes	The classes to bin the values into. If not specified, values are not binned into classes. Warning: Values *must* fit into a bin. It is recommended to use -Infinity and Infinity in the first and last bins.
 	 * @return	{ArrayBuffer}	A canvas with the image rendered on it.
 	 */
 	async do_render(terrain, classes = null) {
@@ -40,6 +45,11 @@ class Terrain50Renderer {
 			colour_domain = this.colour_scale.domain(this.colour_domain);
 			l.log(`[Terrain50Renderer] Static colour domain: ${this.colour_domain[0]} - ${this.colour_domain[1]}`);
 		}
+		
+		if(classes != null)
+			colour_domain = this.colour_scale_classes.domain([
+				0, classes.length
+			]);
 	
 		let width = Math.floor(terrain.meta.ncols / this.scale_factor),
 			height = Math.floor(terrain.meta.nrows / this.scale_factor);
@@ -65,9 +75,18 @@ class Terrain50Renderer {
 				if(typeof terrain.data[a_y] !== "undefined" &&
 					terrain.data[a_y][a_x] !== terrain.meta.NODATA_value) {
 					
-					colour = colour_domain(
-						terrain.data[a_y][a_x]
-					).rgba(); // 0: r, 1: g, 2: b, a: 3
+					if(classes == null) {
+						colour = colour_domain(
+							terrain.data[a_y][a_x]
+						).rgba(); // 0: r, 1: g, 2: b, a: 3
+					}
+					else {
+						for(let i in classes) {
+							if(terrain.data[a_y][a_x] >= classes[i].min && terrain.data[a_y][a_x] < classes[i].max) {
+								colour = colour_domain(i).rgba(); // 0: r, 1: g, 2: b, a: 3
+							}
+						}
+					}
 				}
 				
 				// colour = chroma("red").rgba();
@@ -104,8 +123,8 @@ class Terrain50Renderer {
 	 * Renders the given Terrain50 object to an image.
 	 * Returns a buffer containing a PNG-encoded image, which is ready to be
 	 * written to disk for example.
-	 * @param	{Terrain50}				terrain	The terrain object to render.
-	 * @param	{[number, number][]}	classes	The classes to bin the values into. If not specified, values are not binned into classes. Warning: Values *must* fit into a bin. It is recommended to use -Infinity and Infinity in the first and last bins.
+	 * @param	{Terrain50}		terrain	The terrain object to render.
+	 * @param	{{min:number,max:number}[]}	classes	The classes to bin the values into. If not specified, values are not binned into classes. Warning: Values *must* fit into a bin. It is recommended to use -Infinity and Infinity in the first and last bins.
 	 * @return	{Buffer}	The terrain object as a png, represented as a buffer.
 	 */
 	async render(terrain, classes = null) {
