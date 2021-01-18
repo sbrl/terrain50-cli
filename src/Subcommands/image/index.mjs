@@ -6,10 +6,9 @@ import path from 'path';
 import l from '../../Helpers/Log.mjs';
 import a from '../../Helpers/Ansi.mjs';
 
-import Terrain50 from 'terrain50';
-import Terrain50Renderer from './Terrain50Renderer.mjs';
+import RenderManager from './RenderManager.mjs';
 
-import { write_safe, end_safe } from '../../Helpers/StreamHelpers.mjs';
+import bounds2classes from '../../Helpers/MathsHelpers.mjs';
 
 export default async function(settings) {
 	if(typeof settings.cli.input !== "string") {
@@ -26,42 +25,34 @@ export default async function(settings) {
 		process.exit(1);
 	}
 	
-	let renderer = new Terrain50Renderer(settings.scale_factor | 1);
+	// Parse the bounaries out
+	if(typeof settings.cli.boundaries == "string") {
+		settings.cli.boundaries = settings.cli.boundaries
+			.split(",")
+			.map((value) => parseFloat(value.trim()))
+			.filter((x) => typeof x == "number");
+		
+		settings.classes = bounds2classes(settings.cli.boundaries);
+	}
+	else
+		settings.classes = null;
+	
+	let render_manager = new RenderManager(
+		settings.scale_factor || 1,
+		settings.cli.tolerant,
+		settings.classes
+	);
 	
 	if(settings.cli.stream) {
-		if(!fs.existsSync(settings.cli.output))
-			await fs.promises.mkdir(settings.cli.output, { recursive: true, mode: 0o755 });
-		
-		let reader = process.stdin;
-		if(settings.cli.input !== "-")
-			reader = fs.createReadStream(settings.cli.input, "utf-8");
-		
-		let i = 0;
-		for await(let next of Terrain50.ParseStream(reader, settings.cli.tolerant ? /\s+/ : " ")) {
-			process.stderr.write(`${a.fgreen}>>>>> ${a.hicol} Item ${i} ${a.reset}${a.fgreen} <<<<<${a.reset}\n`);
-			
-			await fs.promises.writeFile(
-				path.join(settings.cli.output, `${i}.png`),
-				await renderer.render(next)
-			);
-			
-			i++;
-		}
-		
-		l.log(`Written ${a.hicol}${i}${a.reset} items to ${a.hicol}${a.fgreen}${settings.cli.output}${a.reset}`);
+		await render_manager.render_many_filename(
+			settings.cli.input,
+			settings.cli.output
+		);
 	}
 	else {
-		let terrain50 = Terrain50.Parse(
-			await fs.promises.readFile(settings.cli.input, "utf-8")
+		await render_manager.render_one_filename(
+			settings.cli.input,
+			settings.cli.output
 		);
-		let png_buffer = await renderer.render(terrain50);
-		if(!(png_buffer instanceof Buffer))
-			throw new Error(`Error: Renderer did not return Buffer (found unexpected ${png_buffer} instead)`);
-		await fs.promises.writeFile(
-			settings.cli.output,
-			png_buffer
-		);
-		
-		l.log(`Written to ${a.hicol}${settings.cli.output}${a.reset}`);
 	}
 }

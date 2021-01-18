@@ -17,3 +17,8 @@ name = "stream"
 description = "Treat the input as a stream of Terrain50 objects. The path specified by the --output argument will be a directory containing all the extracted objects, 1 image file per object."
 default_value = false
 type = "boolean"
+
+[[arguments]]
+name = "boundaries"
+description = "Takes a comma-separated list of numbers. If specified, values will be binned into categories that match the given boundaries. See the note in the README for more information."
+type = "string"

@@ -31,6 +31,34 @@ If you installed it locally, you'll need to do this:
 path/to/node_modules/.bin/terrain50 --help
 ```
 
+### Environment Variables
+Additionally, a number of environment variables are supported.
+
+Variable    | Purpose
+------------|-----------------------------
+`NO_COLOR`  | Disables ANSI escape codes in output (i.e. coloured output). Not recommended unless you have a reason.
+`QUIET`     | Suppress all output except for warnings and errors (not fully supported everywhere yet)
+
+
+## Notes
+
+### `image` subcommand: `--boundaries` argument
+This argument's purpose is the divide the incoming data into categories so that an AI can be potentially trained on the data (e.g. water depth data, as I'm using). It takes a comma separated list of values like this:
+
+```
+0.1,0.5,1,5
+```
+
+...and turns it into a number of bins like so:
+
+ - -Infinity ≤ value < 0.1
+ - 0.1 ≤ value < 0.5
+ - 0.5 ≤ value < 1
+ - 1 ≤ value < 5
+ - 5 ≤ value < Infinity
+
+Each bin is assigned a colour. Then, for each value in the input, it draws the colour that's assigned to the bin that the value fits into.
+
 
 ## Read-world use
  - I'm using it for the main Node.js application for my PhD in Computer Science!

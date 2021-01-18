@@ -24,9 +24,10 @@ class Terrain50Renderer {
 	 * You probably want the .render() method, which returns a buffer 
 	 * containing a png-encoded image.
 	 * @param	{Terrain50}	terrain	The Terrain50 object instance to render.
+	 * @param	{[number, number][]}	classes	The classes to bin the values into. If not specified, values are not binned into classes. Warning: Values *must* fit into a bin. It is recommended to use -Infinity and Infinity in the first and last bins.
 	 * @return	{ArrayBuffer}	A canvas with the image rendered on it.
 	 */
-	async do_render(terrain) {
+	async do_render(terrain, classes = null) {
 		let colour_domain = null;
 		if(this.colour_domain === "auto") {
 			let min = terrain.min_value, max = terrain.max_value;
@@ -103,14 +104,15 @@ class Terrain50Renderer {
 	 * Renders the given Terrain50 object to an image.
 	 * Returns a buffer containing a PNG-encoded image, which is ready to be
 	 * written to disk for example.
-	 * @param	{Terrain50}	terrain	The terrain object to render.
+	 * @param	{Terrain50}				terrain	The terrain object to render.
+	 * @param	{[number, number][]}	classes	The classes to bin the values into. If not specified, values are not binned into classes. Warning: Values *must* fit into a bin. It is recommended to use -Infinity and Infinity in the first and last bins.
 	 * @return	{Buffer}	The terrain object as a png, represented as a buffer.
 	 */
-	async render(terrain) {
+	async render(terrain, classes = null) {
 		let width = Math.floor(terrain.meta.ncols / this.scale_factor),
 			height = Math.floor(terrain.meta.nrows / this.scale_factor);
 		
-		let result = await this.do_render(terrain);
+		let result = await this.do_render(terrain, classes);
 		return Buffer.from(encode(result, [ width, height ], "png"));
 	}
 }
