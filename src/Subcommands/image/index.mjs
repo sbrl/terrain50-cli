@@ -8,7 +8,7 @@ import a from '../../Helpers/Ansi.mjs';
 
 import RenderManager from './RenderManager.mjs';
 
-import bounds2classes from '../../Helpers/MathsHelpers.mjs';
+import { bounds2classes } from '../../Helpers/MathsHelpers.mjs';
 
 export default async function(settings) {
 	if(typeof settings.cli.input !== "string") {
