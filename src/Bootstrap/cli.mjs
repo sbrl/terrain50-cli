@@ -7,6 +7,9 @@ import TOML from '@iarna/toml';
 
 import CliParser from 'applause-cli';
 
+import l from '../Helpers/Log.mjs';
+import { LOG_LEVELS } from '../Helpers/Log.mjs';
+
 import a from '../Helpers/Ansi.mjs';
 import settings from './settings.mjs';
 
@@ -57,6 +60,7 @@ async function get_actions_metadata() {
 export default async function() {
 	let cli = new CliParser(path.resolve(__dirname, "../../package.json"));
 	cli.set_description_extended(`With terrain50 ${await get_version()}`);
+	cli.argument("log-level", "The logging level. Possible values: debug (default), info, log, warn, error, none", "debug", "string");
 	cli.argument("tolerant", "When parsing streams of data, be more tolerant of whitespace inconsistencies and other errors at the cost of decreased performance (otherwise it is assumed a single space separates elements on a line).", false, "boolean");
 	
 	// Disable ansi escape codes if requested
@@ -90,6 +94,12 @@ export default async function() {
 		console.error(`${a.hicol}${a.fred}Error: No subcommand specified (try --help for usage information).${a.reset}`);
 		return;
 	}
+	
+	if(typeof LOG_LEVELS[settings.cli.log_level.toUpperCase()] == "undefined") {
+		console.error(`${a.hicol}${a.fred}Error: Unknown log level '${settings.cli.log_level}' (possible values: debug, info, log, warn, error, none)`);
+		process.exit(1);
+	}
+	l.level = LOG_LEVELS[settings.cli.log_level.toUpperCase()];
 	
 	// 3: Environment Variable Parsing
 	
