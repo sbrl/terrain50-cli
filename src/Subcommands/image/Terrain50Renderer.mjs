@@ -17,7 +17,7 @@ class Terrain50Renderer {
 		]).mode('lrgb');
 		this.colour_nodata = chroma("#f97153").rgba();
 		
-		thiis.colour_scale_classes = chroma.scale([
+		this.colour_scale_classes = chroma.scale([
 			"#00ff00",
 			"#ff0000"
 		]);
