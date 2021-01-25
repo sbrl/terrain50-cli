@@ -53,7 +53,7 @@ class RenderManager {
 			
 			await fs.promises.writeFile(
 				path.join(dir_out, `${i}.png`),
-				await renderer.render(next, this.classes)
+				await this.renderer.render(next, this.classes)
 			);
 			
 			i++;
