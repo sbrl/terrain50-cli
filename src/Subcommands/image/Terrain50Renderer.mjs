@@ -56,7 +56,7 @@ class Terrain50Renderer {
 		let width = Math.floor(terrain.meta.ncols / this.scale_factor),
 			height = Math.floor(terrain.meta.nrows / this.scale_factor);
 	
-		l.log(`[Terrain50Renderer] Dimensions: ${width}x${height}`);
+		l.info(`[Terrain50Renderer] Dimensions: ${width}x${height}`);
 	
 		// Create the image
 		let pixels = new ArrayBuffer(width * height * 4);
