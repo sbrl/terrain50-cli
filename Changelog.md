@@ -14,6 +14,11 @@ npm install --save terrain50-cli
 -----
 
 
+## v1.8 (unreleased)
+ - Add global `--log-level` argument
+ - `image`: Add `--boundaries` argument
+
+
 ## v1.7
 - `image`: Add `--stream` argument for mass-converting large numbers of images from a single stream of multiple terrain50 files
 - `image`: Add support for reading from stdin with `--input -`
