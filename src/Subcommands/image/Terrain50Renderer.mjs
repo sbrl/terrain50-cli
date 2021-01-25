@@ -5,6 +5,8 @@ import encode from 'image-encode';
 
 import l from '../../Helpers/Log.mjs';
 
+import human_filesize from '../../Helpers/human_filesize.mjs';
+
 class Terrain50Renderer {
 	constructor(in_scale_factor, in_domain = "auto") {
 		this.colour_domain = in_domain;
@@ -114,8 +116,7 @@ class Terrain50Renderer {
 			}
 		}
 		
-		l.log(`Written to ${count} pixels (${view32.length} present, ${((count/(width*height))*100).toFixed(2)}%)`);
-		console.log(view8);
+		l.log(`Written to ${count} pixels (${view32.length} present, ${((count/(width*height))*100).toFixed(2)}%, ${human_filesize(view8.length)} total)`);
 		return view8;
 	}
 
