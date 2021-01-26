@@ -14,7 +14,7 @@ npm install --save terrain50-cli
 -----
 
 
-## v1.8 (unreleased)
+## v1.8
  - Add global `--log-level` argument
  - `image`: Add `--boundaries` argument
 
