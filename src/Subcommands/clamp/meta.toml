@@ -1,0 +1,25 @@
+description = "Clamp data values (but not NODATA values) to a given minimum and maximum."
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file to operate on"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "output"
+description = "The filepath to write the output to"
+# default_value = ""
+type = "string"
+
+[[arguments]]
+name = "min"
+description = "The minimum value to clamp to. If not specified, values will not be clamped to a minimum."
+# default_value = ""
+type = "float"
+
+[[arguments]]
+name = "max"
+description = "The maximum value to clamp to. If not specified, values will not be clamped to a maximum."
+# default_value = ""
+type = "float"
