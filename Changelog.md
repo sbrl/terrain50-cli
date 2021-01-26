@@ -14,6 +14,10 @@ npm install --save terrain50-cli
 -----
 
 
+## v1.9 (unreleased)
+ - `identify`: Add value range to output
+
+
 ## v1.8
  - Add global `--log-level` argument
  - `image`: Add `--boundaries` argument

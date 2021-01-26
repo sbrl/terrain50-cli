@@ -14,10 +14,10 @@ function summarise_obj(obj) {
 	if(typeof obj.meta.NODATA_value !== "undefined")
 		console.log(`NODATA value: ${obj.meta.NODATA_value}`);
 	console.log(`Metadata keys: ${Object.keys(obj.meta).join(", ")}`);
+	console.log(`Value range (excluding NODATA values): ${obj.min_value} - ${obj.max_value}`);
 }
 
 export default async function(settings) {
-	let iterator = null;
 	switch(settings.cli.mode) {
 		case "single":
 			let obj = Terrain50.Parse(
