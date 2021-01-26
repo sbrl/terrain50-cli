@@ -17,7 +17,7 @@ npm install terrain50-cli --global
 
 
 ## Usage
-The command-line interface works on a subcommand-based system using [`applause-cli`](https://npmjs.org/packages/applause-cli) (another package of mine).
+The command-line interface works on a subcommand-based system using [`applause-cli`](https://npmjs.org/package/applause-cli) (another package of mine).
 
 Display the usage information like this:
 
