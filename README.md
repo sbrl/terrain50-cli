@@ -2,7 +2,7 @@
 
 > CLI for parsing Ordnance Survey Digital Elevation Model files
 
-This is the CLI for the sister [`terrain50`](https://www.npmjs.com/package/terrain50) library on npm for parsing Ordnance Survey DEM files I also implemented.
+This is the CLI for the sister [`terrain50`](https://www.npmjs.com/package/terrain50) library on npm for parsing Ordnance Survey DEM files in the [ASCII Esri Grid format](https://en.wikipedia.org/wiki/Esri_grid) I also implemented.
 
  - **Current version:** ![current npm version - see the GitHub releases](https://img.shields.io/npm/v/terrain50-cli)
  - **Changelog:** https://github.com/sbrl/terrain50-cli/blob/master/Changelog.md
