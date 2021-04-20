@@ -59,6 +59,7 @@ async function get_actions_metadata() {
 
 export default async function() {
 	let cli = new CliParser(path.resolve(__dirname, "../../package.json"));
+	cli.set_name("terrain50"); // The command name is actually terrain50, even though the package name is terrain50-cli
 	cli.set_description_extended(`With terrain50 ${await get_version()}`);
 	cli.argument("log-level", "The logging level. Possible values: debug (default), info, log, warn, error, none", "debug", "string");
 	cli.argument("tolerant", "When parsing streams of data, be more tolerant of whitespace inconsistencies and other errors at the cost of decreased performance (otherwise it is assumed a single space separates elements on a line).", false, "boolean");

@@ -17,6 +17,7 @@ npm install --save terrain50-cli
 ## v1.9 (unreleased)
  - `identify`: Add value range to output
  - `clamp`: add new subcommand
+ - Fix command name in help text
 
 
 ## v1.8
