@@ -1,0 +1,13 @@
+description = "Convert 1 or more Terrain50 files to JSON (or JSONL if there are multiple frames in the input). Any logging messages are sent to stderr."
+
+[[arguments]]
+name = "input"
+description = "The input Terrain50 file(s) to operate on. May be specified multiple times. Default: stdin (can be specified explicitly with  single dash '-' (without quotes)."
+# default_value = ""
+type = "string_multi"
+
+[[arguments]]
+name = "output"
+description = "The output to write the Terrain50 instance(s) to. Defaults to stdout (represented by a single dash '-' without quotes)."
+default_value = "-"
+type = "string"
