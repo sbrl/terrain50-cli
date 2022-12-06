@@ -61,13 +61,14 @@ Each bin is assigned a colour. Then, for each value in the input, it draws the c
 
 
 ## Read-world use
- - I'm using it for the main Node.js application for my PhD in Computer Science!
+ - I'm using it for for my PhD in Computer Science!
  - _(Are you using this project? Get in touch by [opening an issue](https://github.com/sbrl/terrain50/issues/new))_
 
 
 ## Contributing
 Contributions are welcome as PRs! Don't forget to say that you donate your contribution under the _Mozilla Public License 2.0_ in your PR comment.
 
+TODO: Use `gunzip-maybe` to transparently support reading from gzipped `.gz` input files
 
 ## Licence
 This project is licensed under the _Mozilla Public License 2.0_. See the `LICENSE` file in this repository for the full text.
