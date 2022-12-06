@@ -14,8 +14,9 @@ npm install --save terrain50-cli
 -----
 
 
-## v1.10 (unreleased)
- - Update dependencies
+## v1.10 (6th December 2022)
+ - Update dependencies, including `applause-cli` (now `--help` will work on a per-subcommand basis if you do `terrain50 <subcommand> --help`)
+ - Add `json` subcommand for serialising to JSON[(L)](https://jsonlines.org/)
 
 
 ## v1.9
