@@ -22,7 +22,7 @@ async function process_filename(filepath, stream_out) {
 }
 
 export default async function(settings) {
-	const stream_out = process.stdout;
+	let stream_out = process.stdout;
 	if(settings.cli.output !== "-")
 		stream_out = fs.createWriteStream(settings.cli.output);
 	
