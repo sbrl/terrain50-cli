@@ -1,6 +1,6 @@
 {
 	"name": "terrain50-cli",
-	"version": "1.9.0",
+	"version": "1.10.0",
 	"description": "CLI for parsing Ordnance Survey Digital Elevation Model files",
 	"main": "src/index.mjs",
 	"scripts": {
