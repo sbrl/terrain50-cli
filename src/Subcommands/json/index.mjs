@@ -8,11 +8,12 @@ import a from '../../Helpers/Ansi.mjs';
 import l from '../../Helpers/Log.mjs';
 import Terrain50 from 'terrain50';
 import { write_safe, end_safe } from '../../Helpers/StreamHelpers.mjs';
+import settings from '../../Bootstrap/settings.mjs';
 
 async function process_filename(filepath, stream_out) {
 	const stream_in = fs.createReadStream(filepath);
 	let i = 0;
-	for await(const frame of Terrain50.ParseStream(stream_in)) {
+	for await(const frame of Terrain50.ParseStream(stream_in, settings.cli.tolerant ? /\s+/ : " ")) {
 		const obj = frame.to_json();
 		await write_safe(stream_out, JSON.stringify(obj) + "\n");
 		i++;
