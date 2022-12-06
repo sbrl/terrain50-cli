@@ -14,7 +14,7 @@ npm install --save terrain50-cli
 -----
 
 
-## v1.11 (unreleased)
+## v1.10.1 (unreleased)
  - `json`: Support `--tolerant`
  - `json`: Fix crash when `--output` is specified
 
